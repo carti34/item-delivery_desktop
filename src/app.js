@@ -1,18 +1,21 @@
 import React from 'react';
+import PersonCard from './components/PersonCard';
+import { Students } from './students';
 
-export default class App extends React.Component {
-    dummy = () => {
-        // Just to test arrow functions
-    }
-
-    render() {
-        return (
-            <div className={'hello'}>
-                <h2>Hello Electrate</h2>
-                <img src="./assets/logo.png" />
-                <h4>A basic Electron + React.js template</h4>
-                <h4>Have Fun!</h4>
-            </div>
-        );
-    }
+const App = () => {
+    return (
+        <>
+            <h1>Lista de Estudantes</h1>
+            <ul>
+                {Students.map((student, index) => {
+                    return(
+                        <li key={index.toString()}>
+                            <PersonCard name={student.name} email={student.email} />
+                        </li>
+                    );
+                })}
+            </ul>
+        </>
+    );
 }
+export default App;
