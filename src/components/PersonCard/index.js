@@ -1,9 +1,10 @@
 import React from 'react';
+import * as SC from './styles.js';
 
 const PersonCard = (props) => {
     return (
         <div>
-            <h2>{props.name}</h2>
+            <SC.Title>{props.name}</SC.Title>
             <p>{props.email}</p>
         </div>
     );

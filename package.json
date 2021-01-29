@@ -42,9 +42,11 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "electron-is-dev": "^1.1.0",
+    "node-sass": "^5.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.0",
+    "styled-components": "^5.2.1"
   },
   "build": {
     "appId": "com.karmadust.electrate",
