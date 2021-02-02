@@ -43,16 +43,13 @@ npm run release
 
 Check the `dist` folder for the app
 
-
 ## How Electron Works with React
 
 This template compiles all `*.js` files in `src` into standard JS and copies it to `app`. There it includes `*.html` and `*.css` together with the `main.js` start file. From then it runs and packages using `gulp` as run through `npm`.
 
-
 <p align="center"> 
   <img src="https://preview.ibb.co/jF9Akx/electron_sequence.png" alt="electron_sequence" border="0">
 </p>
-
 
 ## Extending the Template
 
@@ -62,8 +59,11 @@ Some useful tools include:
 2. [Karma](https://karma-runner.github.io/2.0/index.html) + [Jasmine](https://jasmine.github.io/)
 3. [Ant Design](https://ant.design/) (a React based UI Framework)
 
-
 ## Copyright
 
 The template is made available through the [Creative Commons Licence](https://creativecommons.org/publicdomain/zero/1.0/). The logo icon was provided by [Vecteezy](https://www.vecteezy.com/).
 
+## Links
+
+###navigation
+https://medium.com/folkdevelopers/the-ultimate-guide-to-electron-with-react-8df8d73f4c97
