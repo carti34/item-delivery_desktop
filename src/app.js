@@ -1,11 +1,20 @@
 import React from 'react';
+import {  HashRouter, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import DeliverymanRegister from './pages/DeliverymanRegister';
 import PersonCard from './components/PersonCard';
 import { Students } from './students';
 
 const App = () => {
     return (
         <>
-            <h1>Lista de Estudantes</h1>
+            <HashRouter>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/deliveryman" component={DeliverymanRegister} />
+                </Switch>
+            </HashRouter>
+            {/* <h1>Lista de Estudantes</h1>
             <ul>
                 {Students.map((student, index) => {
                     return(
@@ -14,7 +23,7 @@ const App = () => {
                         </li>
                     );
                 })}
-            </ul>
+            </ul> */}
         </>
     );
 }

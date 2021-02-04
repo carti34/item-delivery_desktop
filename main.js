@@ -5,6 +5,7 @@ import 'babel-polyfill';
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const Menu = electron.Menu;
 
 let mainWindow;
 
@@ -17,18 +18,38 @@ const createWindow = () => {
     }
   });
 
+  mainWindow.removeMenu();
+
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }));
 
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
 };
+
+/* const templateMenu = [
+  {
+    label: 'Home',
+    click: () => {
+      mainWindow.webContents.executeJavaScript("location.assign('#');");
+    }
+  },
+  {
+    label: 'Cadastro de Entregadores',
+    click: () => {
+      mainWindow.webContents.executeJavaScript("location.assign('#deliveryman');");
+    }
+  }
+];
+
+const menu = Menu.buildFromTemplate(templateMenu);
+Menu.setApplicationMenu(menu); */
 
 app.on('ready', createWindow);
 
