@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SignupForm from '../../components/SignupForm';
 
 const Deliveryman = () => {
   return (
@@ -19,6 +20,9 @@ const Deliveryman = () => {
           <h2>Deliveryman</h2>
         </Link>
       </div>
+
+      <SignupForm />
+
     </>
   );
 };
