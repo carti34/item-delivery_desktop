@@ -18,6 +18,9 @@ const Deliveryman = () => {
         <Link to="/deliveryman">
           <h2>Deliveryman</h2>
         </Link>
+        <Link to="/deliverymenList">
+          <h2>Deliverymen List</h2>
+        </Link>
       </div>
     </>
   );
