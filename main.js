@@ -26,7 +26,7 @@ const createWindow = () => {
     slashes: true
   }));
 
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -50,11 +50,11 @@ const templateMenu = [
     submenu: [
       {
         label: 'Banda',
-        click: function() {
+        click: function () {
           shell.openExternal('https://www.electronjs.org/');
         }
       },
-      {label: 'Cantor'},
+      { label: 'Cantor' },
     ]
   },
   {
@@ -64,7 +64,7 @@ const templateMenu = [
         label: 'Bandas'
       },
       {
-        label: 'Cantores', 
+        label: 'Cantores',
         click: () => {
           mainWindow.webContents.executeJavaScript("location.assign('#deliveryman');");
         }

@@ -4,6 +4,7 @@ import { HashRouter, Link, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Deliveryman from './pages/Deliveryman';
 import DeliverymenList from './pages/DeliverymenList';
+import AssignOrder from './pages/AssignOrder';
 import PersonCard from './components/PersonCard';
 import { Students } from './students';
 
@@ -45,6 +46,7 @@ const App = () => {
                     <Route exact path="/two" component={Sit} />
                     <Route exact path="/deliveryman" component={Deliveryman} />
                     <Route exact path="/deliverymenList" component={DeliverymenList} />
+                    <Route exact path="/assign" component={AssignOrder} />
                 </Switch>
             </HashRouter>
         </>

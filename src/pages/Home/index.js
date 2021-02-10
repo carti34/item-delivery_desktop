@@ -21,6 +21,9 @@ const Deliveryman = () => {
         <Link to="/deliverymenList">
           <h2>Deliverymen List</h2>
         </Link>
+        <Link to="/assign">
+          <h2>Assign Order</h2>
+        </Link>
       </div>
     </>
   );
