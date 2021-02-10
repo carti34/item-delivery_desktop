@@ -55,7 +55,7 @@ const DeliverymanForm = () => {
                 .required('Campo obrigatório'),
             tel: Yup.string()
                 .required('Campo obrigatório')
-                .matches(/^\(?([0-9]{2})?\)?\s?[0-9]{5}-[0-9]{4}$/, {message: "Formato de telefone inválido"}),
+                .matches(/^\(?([0-9]{2})?\)?\s?[0-9]{5}-[0-9]{4}$/, { message: "Formato de telefone inválido" }),
             obs: Yup.string(),
         }),
         onSubmit: (values) => {
@@ -63,7 +63,7 @@ const DeliverymanForm = () => {
         },
     });
 
-    return(
+    return (
         <form onSubmit={formikObj.handleSubmit}>
             <div>
                 <label htmlFor="name">Nome: </label>
