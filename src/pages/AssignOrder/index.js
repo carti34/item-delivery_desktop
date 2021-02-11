@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Board from '@lourenci/react-kanban';
 
 const board = {
@@ -73,8 +73,46 @@ const board = {
 };
 
 const AssignOrder = () => {
+    const [newBoard, setNewBoard] = useState({});
+    const [printBoard, setPrintBoard] = useState(false);
+
+    console.log(newBoard);
     return (
-        <Board initialBoard={board} />
+        <>
+            <Board
+                initialBoard={board}
+                onCardDragEnd={(board) => {
+                    setPrintBoard(false);
+                    setNewBoard(board);
+                }
+                }
+            />
+            <button
+                type="button"
+                onClick={() => setPrintBoard(true)}
+            >
+                Confirmar
+            </button>
+            {printBoard ? (
+                newBoard.columns.map((column) => {
+                    return (
+                        <div key={column.id}>
+                            <h2>{column.title}</h2>
+                            <ul>
+                                {column.cards.map((card) => {
+                                    return (
+                                        <li key={card.id}>
+                                            <h3>{card.title}</h3>
+                                            <p>{card.description}</p>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </div>
+                    );
+                })
+            ) : null}
+        </>
     );
 }
 
