@@ -7,6 +7,7 @@ const GlobalMenu = () => {
             <Link to="/">Home</Link>
             <Link to="/deliveryman">Cadastro de Entregador</Link>
             <Link to="/deliverymenList">Lista de Entregadores</Link>
+            <Link to="/assignOrder">Encaminhamento de pedidos</Link>
         </nav>
     );
 };
