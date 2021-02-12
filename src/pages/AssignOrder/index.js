@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Board from '@lourenci/react-kanban';
 import GlobalMenu from '../../components/GlobalMenu';
 
@@ -69,11 +69,52 @@ const board = {
 }
 
 const AssignOrder = () => {
+    const [newBoard, setNewBoard] = useState(null);
+    const [printBoard, setPrintBoard] = useState(false);
+
     return (
         <>
             <GlobalMenu />
             <h1>Encaminhamento de Pedidos</h1>
-            <Board initialBoard={board} />
+            <Board
+                initialBoard={board}
+                onCardDragEnd={(board) => {
+                    setPrintBoard(false);
+                    setNewBoard(board);
+                }}
+            />
+            <button
+                type="button"
+                onClick={newBoard ?
+                    () => setPrintBoard(true)
+                    : () => alert('Realize a configuração desejada antes de confirmar.')
+                }
+            >
+                Confirmar
+            </button>
+            {printBoard && newBoard ? (
+                newBoard.columns.map((col) => {
+                    if (col.id > 1) {
+                        return (
+                            <div key={col.id}>
+                                <h2>{col.title}</h2>
+                                <ul>
+                                    {col.cards.map((c) => {
+                                        return (
+                                            <li key={c.id}>
+                                                <h3>{c.title}</h3>
+                                                <p>{c.description}</p>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        );
+                    } else {
+                        return null;
+                    }
+                })
+            ) : null}
         </>
     );
 }

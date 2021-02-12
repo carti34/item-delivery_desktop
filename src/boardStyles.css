@@ -1,0 +1,35 @@
+.react-kanban-column{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(253, 240, 119);
+    width: 160px;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.react-kanban-column-header{
+    background-color: darkorange;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.react-kanban-card{
+    background-color: orange;
+    color: black;
+    font-size: 12px;
+    width: 150px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.react-kanban-card__title{
+    font-size: 12px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.react-kanban-card--dragging{
+    transform: rotate(5deg);
+    background-color: darkorange;
+    color: white;
+}
