@@ -1,4 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { remote } from 'electron';
+import path from 'path';
+import fs from 'fs';
 import GlobalMenu from '../../components/GlobalMenu';
 import api from '../../services/api';
 
@@ -24,6 +27,39 @@ const DeliverymenList = () => {
         loadingDeliverymen();
     }, [loadingDeliverymen]);
 
+    const showNotification = (title, msg) => {
+        const notification = {
+            title: title,
+            body: msg,
+            icon: path.join(__dirname, '../../assets/logo.png'),
+        }
+        new remote.Notification(notification).show();
+    }
+
+    const savePdf = async () => {
+        const filePath = path.join(__dirname, `../../assets/lista-de-entregadores_${new Date().toISOString()}.pdf`);
+        const win = remote.BrowserWindow.getFocusedWindow();
+        const options = {
+            marginsType: 0,
+            pageSize: 'A4',
+            printBackground: true,
+            landscape: false,
+        }
+
+        try {
+            const pdf = await win.webContents.printToPDF(options);
+            fs.writeFile(filePath, pdf, (error) => {
+                if (error) {
+                    showNotification('Erro', `Erro ao salvar o arquivo. ${error}`);
+                } else {
+                    showNotification('PDF Exportado', `PDF exportado com sucesso.`);
+                }
+            });
+        } catch (error) {
+            showNotification('Erro', `Erro ao gerar arquivo. ${error}`);
+        }
+    };
+
     return (
         <>
             <GlobalMenu />
@@ -39,6 +75,15 @@ const DeliverymenList = () => {
                     value={perPage}
                     onChange={e => setPerPage(e.target.value)}
                 />
+            </div>
+            <div>
+                <button
+                    id="pdf"
+                    type="button"
+                    onClick={() => savePdf()}
+                >
+                    Exportar PDF
+                </button>
             </div>
             <ul>
                 {deliverymen.map((d) => {
