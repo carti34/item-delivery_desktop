@@ -1,8 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import api from '../../services/api';
 import * as Yup from 'yup';
 
-const DeliverymanForm = () => {
+const DeliverymanForm = (props) => {
     /* const validate = (values) => {
         const errors = {};
         // validates name
@@ -43,6 +44,7 @@ const DeliverymanForm = () => {
     const formikObj = useFormik({
         initialValues: {
             name: '',
+            cpf: '',
             email: '',
             tel: '',
             obs: '',
@@ -50,6 +52,7 @@ const DeliverymanForm = () => {
         validationSchema: Yup.object({
             name: Yup.string()
                 .required('Campo obrigatório'),
+            cpf: Yup.string(),
             email: Yup.string()
                 .email('E-mail Inválido')
                 .required('Campo obrigatório'),
@@ -58,8 +61,22 @@ const DeliverymanForm = () => {
                 .matches(/^\(?([0-9]{2})?\)?\s?[0-9]{5}-[0-9]{4}$/, { message: "Formato de telefone inválido" }),
             obs: Yup.string(),
         }),
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: async (values) => {
+            try {
+                const cliente = {
+                    nome: values.name,
+                    cpf: values.cpf,
+                    telefone: values.tel,
+                    email: values.email,
+                };
+
+                const response = await api.post('/clientes', cliente);
+                if (response.data) {
+                    props.notification('Cadastro de Clientes', response.data);
+                }
+            } catch (error) {
+                props.notification('Erro', `Ocorreu uma falha ao cadastrar o cliente. Tente novamente. ${error}`);
+            }
         },
     });
 
@@ -76,6 +93,18 @@ const DeliverymanForm = () => {
                     value={formikObj.values.name}
                 />
                 {formikObj.touched.name && formikObj.errors.name ? <label htmlFor="name">{formikObj.errors.name}</label> : null}
+            </div>
+            <div>
+                <label htmlFor="cpf">CPF: </label>
+                <input
+                    id="cpf"
+                    name="cpf"
+                    type="text"
+                    onChange={formikObj.handleChange}
+                    onBlur={formikObj.handleBlur}
+                    value={formikObj.values.cpf}
+                />
+                {formikObj.touched.cpf && formikObj.errors.cpf ? <label htmlFor="name">{formikObj.errors.cpf}</label> : null}
             </div>
             <div>
                 <label htmlFor="email">E-mail: </label>
