@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <GlobalMenu />
-      <h1>Home</h1>
+      <h1>Página Inicial</h1>
       <form>
         <div>
           <label htmlFor='title'>Título: </label>
