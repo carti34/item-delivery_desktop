@@ -10,7 +10,8 @@
     "test": "jest",
     "test-update": "jest --updateSnapshot",
     "release": "gulp release",
-    "make-icon": "gulp make-icon"
+    "make-icon": "gulp make-icon",
+    "dist": "build"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -29,7 +30,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.8.0",
     "electron": "~7.2.4",
-    "electron-builder": "^20.39.0",
+    "electron-builder": "^20.44.4",
     "electron-icon-maker": "0.0.4",
     "electron-react-devtools": "^0.5.3",
     "gulp": "^4.0.2",
@@ -54,6 +55,10 @@
   },
   "build": {
     "appId": "com.karmadust.electrate",
+    "win": {
+      "target": "msi",
+      "icon": "build/icon.ico"
+    },
     "files": [
       "app/**/*",
       "node_modules/**/*",
