@@ -56,7 +56,7 @@
   "build": {
     "appId": "com.karmadust.electrate",
     "win": {
-      "target": "msi",
+      "target": "portable",
       "icon": "build/icon.ico"
     },
     "files": [
