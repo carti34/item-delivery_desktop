@@ -67,3 +67,9 @@ Some useful tools include:
 
 The template is made available through the [Creative Commons Licence](https://creativecommons.org/publicdomain/zero/1.0/). The logo icon was provided by [Vecteezy](https://www.vecteezy.com/).
 
+## Build
+
+https://medium.com/@jamzi/building-desktop-applications-with-electron-electron-builder-47484193cbcc
+https://www.electron.build/
+https://www.electron.build/configuration/configuration#configuration
+https://www.electron.build/configuration/win
